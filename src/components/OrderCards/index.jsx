@@ -3,7 +3,7 @@ const OrderCards = props => {
 
     return (
         <div className="flex justify-between">
-            <p>
+            <p className="text-xl">
                 <span>01.02.23</span>
                 <span>{totalProducts}</span>
                 <span>{totalPrice}</span>

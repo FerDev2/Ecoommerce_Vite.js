@@ -2,7 +2,7 @@
 
 function Layout({ children }) {
   return (
-    <div className="flex justify-center flex-col gap-20 flex-wrap items-center pt-5 ">
+    <div className="flex justify-center flex-col flex-wrap items-center pt-5 ">
       {children}
     </div>
   )

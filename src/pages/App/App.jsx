@@ -6,6 +6,7 @@ import MyOrder from '../MyOrder';
 import NotFound from '../NotFound';
 import Singin from '../Singin';
 import MyOrders from '../MyOrders';
+import SingleProduct from '../Single-Product';
 import NavBar from '../../components/NavBar/'
 
 import { ShoppingCartProvider } from '../../context';
@@ -17,6 +18,7 @@ const AppRoutes = () => {
   const routes = [
     { path: '/', element: <Home /> },
     { path: '/my-account', element: <MyAccount /> },
+    { path: '/single-product', element: <SingleProduct /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/my-orders/last', element: <MyOrder /> },

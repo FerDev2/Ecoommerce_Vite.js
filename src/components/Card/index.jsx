@@ -1,7 +1,11 @@
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../context";
+import { Link } from 'react-router-dom'
 
 const Card = (data) => {
+
+  const transition_hover = 'hover:[&_img]:scale-125 scale-100 hover:[&_img]:transition-all hover:[&_img]:duration-500 hover:[&_img]:ease-in-out [&_img]:transition-all [&_img]:duration-500 [&_img]:ease-in-out'
+
   const context = useContext(ShoppingCartContext)
 
   const productShow = (productData) => {
@@ -22,31 +26,34 @@ const Card = (data) => {
 
     if (isInCart) {
       return (
-        <svg className="absolute top-2 right-2" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#059669" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22" /></svg>
+        <div className="font-bold text-center bg-green-500  rounded-md p-3 cursor-pointer ">
+          In cart
+        </div>
       )
     } else {
       return (
         <button
-          className=" text-center bg-green-100 absolute top-2 right-2 p-1 rounded-full w-8 h-8 cursor-pointer"
+          className="font-bold text-center bg-green-100  rounded-md p-3 cursor-pointer transition-all duration-300 ease-in-out hover:bg-green-500 hover:transition-all hover:duration-300 hover:ease-in-out"
           onClick={() => addProductsToCart(event, data.data)}>
-          +
+          Add cart
         </button>
       )
     }
-
   }
 
   return (
-    <div className="w-1/6 h-1/6 flex flex-col"
+    <div className={` ${transition_hover} overflow-hidden  w-[300px] h-full flex flex-col flex-wrap justify-between items-center border-solid border-2 border-gray rounded-xl shadow-md py-5 px-5`}
       onClick={() => productShow(data.data)}>
-      <figure className="relative h-full w-full flex">
-        <span className="absolute bottom-5 left-5 bg-white/80 px-5 py-1 rounded-full ">{data.data.category}</span>
-        <img src={data.data.image} alt="" className="w-fit h-fit object-fit" />
+      <div className="mx-auto px-4 py-2 font-bold my-5 bg-yellow-100 rounded-full ">{data.data.category}</div>
+      <Link to='/single-product' state={data.data}>
+        <figure className="relative h-[400px] w-[200px] flex items-center justify-center">
+          <img src={data.data.image} alt="" className="w-full h-1/2 object-contain" />
+        </figure>
+      </Link>
+      <p className="relative flex flex-col justify-center items-center px-1 pt-2 text-12">
         {renderIcon(data.data.id)}
-      </figure>
-      <p className="flex justify-between px-1 pt-2 text-xl">
-        <span>{data.data.title}</span>
-        <span>{data.data.price}</span>
+        <span className="text-center mt-5">{data.data.title}</span>
+        <span>S/ {data.data.price}</span>
       </p>
     </div>
   )

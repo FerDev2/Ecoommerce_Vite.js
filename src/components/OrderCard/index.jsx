@@ -2,20 +2,25 @@ const OrderCard = props => {
     const { id, title, imageUrl, price, handleDelete } = props;
     let renderClose
     if (handleDelete) {
-        renderClose = <div onClick={() => handleDelete(id)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24"><path fill="#000000" d="m12 13.4l-2.917 2.925q-.277.275-.704.275t-.704-.275q-.275-.275-.275-.7t.275-.7L10.6 12L7.675 9.108Q7.4 8.831 7.4 8.404t.275-.704q.275-.275.7-.275t.7.275L12 10.625L14.892 7.7q.277-.275.704-.275t.704.275q.3.3.3.713t-.3.687L13.375 12l2.925 2.917q.275.277.275.704t-.275.704q-.3.3-.712.3t-.688-.3z" /></svg>
+        renderClose = <div className="cursor-pointer" onClick={() => handleDelete(id)}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><path fill="none" d="M296 64h-80a7.91 7.91 0 0 0-8 8v24h96V72a7.91 7.91 0 0 0-8-8" /><path fill="#000000" d="M432 96h-96V72a40 40 0 0 0-40-40h-80a40 40 0 0 0-40 40v24H80a16 16 0 0 0 0 32h17l19 304.92c1.42 26.85 22 47.08 48 47.08h184c26.13 0 46.3-19.78 48-47l19-305h17a16 16 0 0 0 0-32M192.57 416H192a16 16 0 0 1-16-15.43l-8-224a16 16 0 1 1 32-1.14l8 224A16 16 0 0 1 192.57 416M272 400a16 16 0 0 1-32 0V176a16 16 0 0 1 32 0Zm32-304h-96V72a7.91 7.91 0 0 1 8-8h80a7.91 7.91 0 0 1 8 8Zm32 304.57A16 16 0 0 1 320 416h-.58A16 16 0 0 1 304 399.43l8-224a16 16 0 1 1 32 1.14Z" /></svg>
         </div>
     }
 
     return (
-        <div>
-            <figure>
-                <img src={imageUrl} alt="" />
-            </figure>
-            <p>{title}</p>
-            <div>
-                <p>{price}</p>
+        <div className="flex justify-between items-center gap-10 py-5">
+            <div className="flex gap-10 items-center">
+                <figure className="w-[150px] h-[150px] flex justify-center items-center ">
+                    <img src={imageUrl} alt="" />
+                </figure>
+                <div>
+                    <p className="text-start text-pretty font-bold text-xl">{title}</p>
+                    <div>
+                        <p className="text-md">S/ {price}</p>
+                    </div>
+                </div>
             </div>
+
             {renderClose}
         </div>
     )
